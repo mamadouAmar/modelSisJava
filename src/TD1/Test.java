@@ -160,14 +160,14 @@ public class Test {
 							//1- (Done)La liste des consultations pour un patient
 							enregistrerPatient();
 							Fonctionnalites.defListeConsultationPatient(patient);
-							//Fonctionnalites.afficherConsultations();
+							Fonctionnalites.afficherListeConsultations();
 							break;
 						case 2:
 							//2- (Done) La Liste des patients consultés à une date donnée
 							System.out.println("La date ?? sous forme yyyy/mm/dd :");
 							Date d = new Date(clavier.next());
 							Fonctionnalites.defpatientsConsultes(d);
-							Consultation.afficherPatientConsultes();
+							Fonctionnalites.afficherListePatients();
 							break;
 						case 3:
 							//3- (Done) Pour une consultation afficher le médecin et son patient\n
@@ -182,26 +182,26 @@ public class Test {
 							//4- (Already Done) La liste des consultations effectuées par un médecin\n
 							enregistrerMedecin();
 							Fonctionnalites.defListeConsultations(medecin);
-							
+							Fonctionnalites.afficherListeConsultations();
 							break;
 						case 5:
 							//5- (Done) La liste des patients consultés par un médecin\n
 							enregistrerMedecin();
 							Fonctionnalites.defPatientsConsultes(medecin);
-							Consultation.afficherPatientConsultes();
+							Fonctionnalites.afficherListePatients();
 							break;
 						case 6:
 							//6- (Done) La liste des médecins qui ont consulté un patient\n
 							enregistrerPatient();
 							Fonctionnalites.defListeMedecins(patient);
-							Consultation.afficherMedecinsConsul();
+							Fonctionnalites.afficherListeMedecins();
 							break;
 						case 7:
 							//7- (Done) La liste des médecins qui ont effectué des consultations à une date donnée\n
 							System.out.println("La date ?? sous forme yyyy/mm/dd :");
 							d = new Date(clavier.next());
 							Fonctionnalites.defListeMedecins(d);
-							Consultation.afficherMedecinsConsul();
+							Fonctionnalites.afficherListeMedecins();
 							break;
 						case 8:
 							//8- (Done) Le nombre de consultations\n
@@ -225,23 +225,27 @@ public class Test {
 							System.out.println("La date ?? sous forme yyyy/mm/dd :");
 							d = new Date(clavier.next());
 							Fonctionnalites.defMedicamentsPrescrits(medecin, patient, d);
-							Prescription.afficherMedicaments();
+							Fonctionnalites.afficherListeMedicament();
 							break;
 						case 11:
 							//11- (Done) La liste des médicaments prescrit par un médecin à un patient\n
 							enregistrerMedecin();
 							enregistrerPatient();
 							Fonctionnalites.defMedicamentsPrescrits(medecin, patient);
-							Prescription.afficherMedicaments();
+							Fonctionnalites.afficherListeMedicament();
 							break;
 						case 12:
 							//12- (Done) La liste des médicaments prescrit au moins par deux médecins
 							Fonctionnalites.defListeMedecaments2Medecins();
-							Prescription.afficherMedicaments();
+							Fonctionnalites.afficherListeMedicament();
 							break;
 						case 13:
 							//13- (Done) Pour chaque médicament fournir le nombre total de prescription : Présenter deux solutions d’implémentation\n
 							Fonctionnalites.defNombrePrescription();
+							Prescription.afficherMap();
+							//Ou
+//							for(Medicament medoc : Fonctionnalites.medicaments)
+//								System.out.println(medoc.getLibelle()+ "=>"+ medoc.nombre_prescription);
 							break;
 						default:
 							break;

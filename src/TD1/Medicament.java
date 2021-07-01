@@ -5,10 +5,14 @@ public class Medicament {
 	private int code;
 	private String libelle;	
 	
+	//second method
+	public int nombre_prescription;
 	//Constructeurs
 	public Medicament(int code, String libelle) {
 		this.code = code;
 		this.libelle = new String(libelle);
+		this.nombre_prescription = 0;
+
 	}
 
 	public Medicament(Medicament medicament) {

@@ -7,6 +7,7 @@ public class Medecin {
 	private int matricule;
 	private String nom;
 	
+		
 	//liste consulations effectuees par un mèdecin
 	public static ArrayList<Consultation> listeConsultations;
 		

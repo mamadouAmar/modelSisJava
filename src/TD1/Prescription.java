@@ -11,8 +11,16 @@ public class Prescription {
 	private Consultation consultation;
 	
 	//liste de nombre prescriptions de tout les médicaments
-	static Map<String, Integer> medicamentsNombrePrescriptions;
-		
+	public static Map<String, Integer> medicamentsNombrePrescriptions;
+	//affichage
+	public static void afficherMap() {
+		System.out.println("medicament : nombre de prescriptions");
+        for (Map.Entry el : medicamentsNombrePrescriptions.entrySet()) {
+           System.out.println(el.getKey()+ " => " + el.getValue() + "prescriptions");
+        }
+	}
+	
+	
 	//liste médicaments dépendants du paramètre
 	static ArrayList<Medicament> medicamentsPrescrits;
 	static void afficherMedicaments() {
@@ -26,6 +34,8 @@ public class Prescription {
 		this.numero = numero;
 		this.nombrePrise = nombrePrise;
 		this.medicament = medicament;
+		//second methode
+		this.medicament.nombre_prescription++;
 		this.consultation = consultation;
 	}
 	
