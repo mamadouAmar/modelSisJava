@@ -11,6 +11,17 @@ public class Test {
 	static Consultation consultation;
 	static Prescription prescription;
 	static int nbPrises = 2; //default
+	static HospitalDatabase hdb = new HospitalDatabase();
+	
+	//initialiser les tableaux
+	static void init() {
+		hdb.selectAllMedicaments();
+		hdb.selectAllMedecin();
+		hdb.selectAllPatients();
+		hdb.selectAllConsultations();
+		hdb.selectAllPrescriptions();
+	}
+	
 	
 	static Scanner clavier = new Scanner(System.in);
 	
@@ -42,6 +53,7 @@ public class Test {
 		int code = trouverMedicament(lib);
 		if(code == -1) {
 			medicament = new Medicament(Fonctionnalites.medicaments.size(), lib);
+			hdb.insertMedicament(medicament);
 			Fonctionnalites.medicaments.add(new Medicament(medicament));
 			System.out.println("Medicament bien enregistré\n"+medicament);
 		}
@@ -68,6 +80,7 @@ public class Test {
 		int ss = trouverPatient(nom);
 		if(ss == -1) {
 			patient = new Patient(Fonctionnalites.patients.size(), nom);
+			hdb.insertPatient(patient);
 			Fonctionnalites.patients.add(new Patient(patient));
 			System.out.println("Patient bien enregistré\n"+patient);
 		}
@@ -96,6 +109,7 @@ public class Test {
 		}
 		else {
 			medecin = new Medecin(Fonctionnalites.medecins.size(), nom);
+			hdb.insertMedecin(medecin);
 			Fonctionnalites.medecins.add(new Medecin(medecin));
 			System.out.println("medecin bien enregistré\n"+medecin);
 
@@ -111,6 +125,9 @@ public class Test {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		init();
+		
 		String menu_fonctionnnalités = new String("Choisissez une option :\n"
 				+ "1- (Done)La liste des consultations pour un patient\n"
 				+ "2- (Done) La Liste des patients consultés à une date donnée\n"
@@ -259,7 +276,7 @@ public class Test {
 					System.out.println("Patient consulte.....");
 					enregistrerPatient();
 					consultation = new Consultation(Fonctionnalites.consultations.size(), new Date(), patient, medecin);
-					consultation = new Consultation(Fonctionnalites.consultations.size(), new Date(), patient, medecin);
+					hdb.insertConsultation(consultation);
 					int c;
 					do{
 						System.out.println("Tapez sur 1 pour faire une prescription et 2 pour quitter");
@@ -273,6 +290,7 @@ public class Test {
 								if(!(nbPrises > 0 && nbPrises < 4))
 									nbPrises = 4;
 								Prescription pres = new Prescription(Fonctionnalites.prescriptions.size(), nbPrises, medicament, consultation);
+								hdb.insertPrescription(pres);
 								Fonctionnalites.prescriptions.add(new Prescription(pres));
 								System.out.println(pres);
 								}

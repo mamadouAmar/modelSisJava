@@ -10,7 +10,13 @@ public class Medecin {
 		
 	//liste consulations effectuees par un mèdecin
 	public static ArrayList<Consultation> listeConsultations;
-		
+	
+	public Medecin() {
+		matricule = 0;
+		nom = "";
+	}
+	
+	
 	public Medecin(int matricule, String nom) {
 		this.matricule = matricule;
 		this.nom = new String(nom);
